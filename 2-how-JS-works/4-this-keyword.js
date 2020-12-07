@@ -1,10 +1,12 @@
-/////////////////////////////////////
-// Lecture: The this keyword
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+/******************************************
+  TOPIC: 'this' keyword
+*****************************************/
 
 /* Rules:
 1. In regular functions: 'this' keyword points at the global object i.e. window in browsers.
 2. Method call : 'this' variable points to the object that is calling the method.
-3. 'this' keyword is not assigned a value untill the function where it is defined is actually called.
+3. 'this' keyword is not assigned a value until the function where it is defined is actually called.
 */
 
 console.log(this); //window
@@ -13,13 +15,13 @@ console.log(this); //window
 calculateAge(1985);
 
 function calculateAge(year) {
-	console.log(2016 - year);
+	console.log(2020 - year);
 	console.log(this);
 }
 
 //Now with Objects
 var john = {
-	name: "John",
+	name: 'John',
 	yearOfBirth: 1990,
 	calculateAge: function() {
 		console.log(this); //'this' refers to the Object, since calculateAge is a method of the object
@@ -35,7 +37,7 @@ var john = {
 john.calculateAge();
 
 var mike = {
-	name: "Mike",
+	name: 'Mike',
 	yearOfBirth: 1984
 };
 

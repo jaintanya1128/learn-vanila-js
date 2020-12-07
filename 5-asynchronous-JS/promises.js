@@ -11,79 +11,72 @@
 
 */
 
-const delay = seconds => {
-  return new Promise(resolve => {
-    setTimeout(resolve, seconds * 10000);
-  });
+const delay = (seconds) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, seconds * 10000);
+    });
 };
 
-console.log("zero seconds");
-delay(1).then(() => console.log("one second")); //then is fired when the promise is resoved
-delay(3).then(() => console.log("three second"));
-
+console.log('zero seconds');
+delay(1).then(() => console.log('one second')); //then is fired when the promise is resolved
+delay(3).then(() => console.log('three second'));
 
 //we can pass arguments through the resolve method(which is a callback function)
-const delay = seconds => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(`${seconds} seconds delay is up`), seconds * 10000);
-  });
+const delay1 = (seconds) => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(`${seconds} seconds delay is up`), seconds * 10000);
+    });
 };
 
-console.log("zero seconds");
-delay(1).then(msg => console.log(msg)); //then is fired when the promise is resoved
-delay(3).then(msg => console.log(msg));
-
+console.log('zero seconds');
+delay1(1).then((msg) => console.log(msg)); //then is fired when the promise is resolved
+delay1(3).then((msg) => console.log(msg));
 
 //now displaying some other messages and using multiple then methods
 //- 'then' can be chained to one another to execute some code in a row
-const delay = seconds => {
-  return new Promise((resolve, reject) => {
-    if (typeof seconds !== 'number') {
-      reject(new Error('Argument seconds must be a number'));
-    }
-    setTimeout(
-      () => resolve(`${seconds} second delay is up`),
-      seconds * 1000
-    );
-  });
+const delay2 = (seconds) => {
+    return new Promise((resolve, reject) => {
+        if (typeof seconds !== 'number') {
+            reject(new Error('Argument seconds must be a number'));
+        }
+        setTimeout(() => resolve(`${seconds} second delay is up`), seconds * 1000);
+    });
 };
 
-console.log("zero seconds");
-delay("10 Minutes").then(msg => msg.toUpperCase())
-  .then(msg => `${msg}!!!!!!`)
-  .then(msg => console.log(msg));
+console.log('zero seconds');
+delay2('10 Minutes')
+    .then((msg) => msg.toUpperCase())
+    .then((msg) => `${msg}!!!!!!`)
+    .then((msg) => console.log(msg));
 
-delay(2).then(msg => msg.toUpperCase())
-  .then(msg => `${msg}!!!!!!`)
-  .then(msg => console.log(msg));
-
+delay2(2)
+    .then((msg) => msg.toUpperCase())
+    .then((msg) => `${msg}!!!!!!`)
+    .then((msg) => console.log(msg));
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //using promise to load data
 const spacePeople = () => {
-  return new Promise((resolves, rejects) => {
-    const api = 'http://api.open-notify.org/astros.json';
-    const request = new XMLHttpRequest();
-    request.open('GET', api);
-    request.onload = () => {
-      if (request.status === 200) {
-        resolves(JSON.parse(request.response));
-      } else {
-        rejects(Error(request.statusText));
-      }
-    };
-    request.onerror = err => rejects(err);
-    request.send();
-  });
+    return new Promise((resolves, rejects) => {
+        const api = 'http://api.open-notify.org/astros.json';
+        const request = new XMLHttpRequest();
+        request.open('GET', api);
+        request.onload = () => {
+            if (request.status === 200) {
+                resolves(JSON.parse(request.response));
+            } else {
+                rejects(Error(request.statusText));
+            }
+        };
+        request.onerror = (err) => rejects(err);
+        request.send();
+    });
 };
 
 spacePeople().then(
-  spaceData => console.log(spaceData),
-  err => console.error(
-    new Error('Cannot load space people')
-  )
+    (spaceData) => console.log(spaceData),
+    (err) => console.error(new Error('Cannot load space people'))
 );
-
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /* The FETCH function
@@ -98,46 +91,32 @@ spacePeople().then(
 */
 
 fetch('http://api.open-notify.org/astros.json')
-  .then(res => res.json())
-  .then(console.log();)
+    .then((res) => res.json())
+    .then(console.log());
 
 //OR
 
-const getPeopleInSpace = () =>
-  fetch('http://api.open-notify.org/astros.json')
-  .then(res => res.json());
+const getPeopleInSpace = () => fetch('http://api.open-notify.org/astros.json').then((res) => res.json());
 
-getPeopleInSpace()
-  .then(console.log();)
+getPeopleInSpace().then(console.log());
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //- Using fetch, we can return data using promises. They can be composed, reused, and saved.
 
-const getPeopleInSpace = () =>
-  fetch('http://api.open-notify.org/astros.json')
-  .then(res => res.json());
+const getPeopleInSpace = () => fetch('http://api.open-notify.org/astros.json').then((res) => res.json());
 
 const spaceNames = () =>
-  getPeopleInSpace() //call the function to get the response
-  .then(json => json.people) //parse the response to get only the people array
-  .then(people => people.map(p => p.name)) //use map to get only the names from the array
-  .then(names => names.join(', ')); //then finally use join to concatenate the names
+    getPeopleInSpace() //call the function to get the response
+        .then((json) => json.people) //parse the response to get only the people array
+        .then((people) => people.map((p) => p.name)) //use map to get only the names from the array
+        .then((names) => names.join(', ')); //then finally use join to concatenate the names
 
-spaceNames()
-  .then(console.log);
+spaceNames().then(console.log);
 
 /*
 So promises are extremely useful.
 We can incorporate them into all sorts of requests and make them into functions so that we can reuse them again and again,
 and fetch makes the syntax much simpler than having to use xml http requests.
 */
-
-
-
-
-
-
-
-
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------

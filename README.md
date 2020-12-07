@@ -1,1 +1,1 @@
-# learn-vanila-js
+# learn-vanilla-js

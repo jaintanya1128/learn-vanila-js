@@ -9,7 +9,7 @@ var john = {
 };
 
 //function constructor
-//ALways the name of fucntion constructor starts with a capital letter to denote it as a Function Constructor
+//ALways the name of function constructor starts with a capital letter to denote it as a Function Constructor
 var Person = function(name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
@@ -23,7 +23,7 @@ Person.prototype.calculateAge  = function() {
 
 Person.prototype.lastName = 'Smith';
 
-//this is instanciation
+//this is instantiations
 var john = new Person('John', 1990, 'teacher');
 var jane = new Person('Jane', 1969, 'designer');
 var mark = new Person('Mark', 1948, 'retired');
@@ -68,55 +68,9 @@ Summary:
 1. The difference between object.create and the function constructor pattern is that object.create builds an object
   that inherits directly from the one that we passed into the first argument.
   While, on the other hand, the function constructor the newly created object inherits from the constructor's prototype property
-2. one of the biggest benefits of object.create is that it allows us to implement a really complex inheritant structures in an easier way
+2. one of the biggest benefits of object.create is that it allows us to implement a really complex inheritance structures in an easier way
   than function constructors because it allows us to directly specify which object should be a prototype.
 3.
-*/
-
-/////////////////////////////
-// Lecture: Primitives vs objects
-/* DIFFERENCE between Primitives n Object:
-So a big difference between primitives and objects is that variables containing primitives actually hold that data inside of the variable itself.
-On objects it's very different. Variables associated with objects do not actually contain the object, but instead they contain a reference
-  to the place in memory where the object sits, so where the object is stored.
-So again a variable declared as an object does not have a real copy of the object it just points to that object.
-
-*/
-
-/*
-// Primitives
-var a = 23;
-var b = a;
-a = 46; //mutate a here
-console.log(a);
-console.log(b);
-
-// Objects
-var obj1 = {
-    name: 'John',
-    age: 26
-};
-var obj2 = obj1;
-obj1.age = 30;
-console.log(obj1.age);
-console.log(obj2.age);
-
-// Functions
-var age = 27;
-var obj = {
-    name: 'Jonas',
-    city: 'Lisbon'
-};
-
-function change(a, b) {
-    a = 30;
-    b.city = 'San Francisco';
-}
-
-change(age, obj);
-
-console.log(age); // this is unchanegd as it refers to the global variable which remains uneffected, as it is a primitive value.
-console.log(obj.city); //here the change is reflected as it is just the reference to the object that is passed
 */
 
 /************* FUNCTIONS ******************/
@@ -396,13 +350,4 @@ c) correct answer (I would use a number for this)
     nextQuestion();
 
 })();
-*/
-
-/////////////////////////////
-// Lecture: Module pattern
-/*
-Modules are used to keep pieces of code that are related to one another together inside of separate, independent, and organized units.
-In each of these modules, we have variables and functions that are private, which means that they are only accessible inside of the module.
-Also we will have public methods, which means that they are exposed and that other functions or modules can access and use them.
-This is called data encapsulation, which allows us to hide the implementation details of a specific module from the outside scope and only expose a public interface called an API.
 */
