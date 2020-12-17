@@ -20,15 +20,15 @@ Why is Scope Important?
 */
 
 // First scoping example
-var a = 'Hello!';
+var a = 'Hello!,';
 first();
 
 function first() {
-	var b = 'Hi!';
+	var b = 'I\'m';
 	second();
 
 	function second() {
-		var c = 'Hey!';
+		var c = 'Awesome...';
 		console.log(a + b + c);
 	}
 }
@@ -49,7 +49,7 @@ function first() {
 }
 
 function third() {
-	var d = 'John'; //local scope for third() function
+	var d = 'there'; //local scope for third() function
 	//console.log(c); // will not be able to access 'c' as it is not in its scope chain
 	console.log(a + d); //able to access 'a' from the global execution context up the scope chain
 }
@@ -59,9 +59,9 @@ function third() {
   TOPIC: Nested Scope
 *****************************************/
 //Just like functions in JavaScript, a scope can be nested inside another scope.
-var name = 'Peter';
+var name = 'there';
 function greet() {
-	var greeting = 'Hello';
+	var greeting = 'Hello!, ';
 	{
 		let lang = 'English';
 		console.log(`${lang}: ${greeting} ${name}`);
@@ -71,6 +71,7 @@ greet();
 
 //Here we have 3 scopes nested within each other
 /* First, the block scope (created due to the let variable) is nested inside the local or function scope which is in turn nested inside the global scope. */
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /******************************************
   TOPIC: Lexical Scope
@@ -79,8 +80,15 @@ greet();
 //And if not found there in its calling context. Repeatedly, until it is looking in the global execution context.
 //(And if it does not find it there, it’s undefined).
 //remember that a function has access to variables that are defined in its calling context. The formal name of this phenomenon is the lexical scope.
+console.log(age);
+var age = 23;
 
+function foo() {
+	console.log(age);
+	var age = 65;
+	console.log(age);
+}
+foo();
+console.log(age);
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-/******************************************
-  TOPIC: Lexical Scope
-*****************************************/
+

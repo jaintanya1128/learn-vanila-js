@@ -10,10 +10,9 @@
 */
 
 console.log(this); //window
-
 //global execution content, hence this is window
-calculateAge(1985);
 
+calculateAge(1985);
 function calculateAge(year) {
 	console.log(2020 - year);
 	console.log(this);

@@ -34,7 +34,7 @@ console.log(b); // ReferenceError : b is not defined
 
 /* Note:
 There’s a difference between ReferenceError and undefined error.
-- An undefined error occurs when we have a variable which is either not defined or explicitly defined as type undefined.
+- An undefined error occurs when we have a variable which is either 'not defined' or explicitly defined as type undefined.
 - ReferenceError is thrown when trying to access a previously undeclared variable.
 */
 
@@ -77,14 +77,4 @@ var retirement = function(year) {
 };
 retirement(1956);
 
-// variables
-console.log(age);
-var age = 23;
 
-function foo() {
-	console.log(age);
-	var age = 65;
-	console.log(age);
-}
-foo();
-console.log(age);
