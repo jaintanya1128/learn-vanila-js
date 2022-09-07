@@ -53,3 +53,33 @@ isNaN(x) == isNaN(Number(x)); // true for every value of x, including x == undef
 // because isNaN(undefined) == true and Number(undefined) returns NaN,
 // but ...
 isNaN() == isNaN(Number()); // false, because isNaN() == true and Number() == 0
+
+
+
+
+
+const object = {
+  who: 'World',
+  greet() {
+    return `Hello, ${this.who}!`;
+  },
+
+  farewell: () => {
+    return `Goodbye, ${this.who}!`;
+  }
+};
+
+const object2 = {
+  who: 'India',
+}
+
+console.log(object.greet());   
+console.log(object.farewell()); 
+const c = object.greet;
+console.log(c());
+const d = object.farewell;
+console.log(d());
+const m = object.farewell.call(object2);
+console.log(m)
+const n = object.greet.bind(object2);
+console.log(n())

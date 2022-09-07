@@ -57,3 +57,29 @@ obj2.aFor = aFor3;
 //Output 7
 obj2.aFor();
 //Apricot : this refers to obj2 object for normal function
+
+//Quest 1: Variable vs property
+const object = {
+	message: 'Hello, World!',
+	getMessage() {
+	  const message = 'Hello, Earth!';
+	  return this.message;
+	}
+  };
+console.log(object.getMessage());
+
+//
+var fullName = 'FirstName1 lastName1';
+var obj = {
+    fullName: 'FirstName2 LastName2',
+    prop: {
+        getName: function() {
+            return this.fullName;
+        }
+    },
+    getName: function () {
+        return this.fullName;
+    }
+};
+console.log(obj.prop.getName()); //undefined bcz 'this' refers to getName func  
+console.log(obj.getName()); //FirstName2 LastName2
